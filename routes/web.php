@@ -26,8 +26,8 @@ Route::get('/modify',function(){
 
 //user
 Route::post('/register',[UserController::class, 'store'])->name('register');
-Route::post('/user/delete/{id}',[UserController::class, 'delete'])->name('deleteUser');
-Route::post('/user/get/{id}', [UserController::class, 'getUser'])->name('getUser');
+Route::delete('/user/delete/{cipherid}', [UserController::class, 'delete'])->name('deleteUser');
+Route::post('/user/get/{cipherid}', [UserController::class, 'getUser'])->name('getUser');
 Route::put('/user/modify', [UserController::class, 'modifyUser'])->name('modifyUser');
 
 

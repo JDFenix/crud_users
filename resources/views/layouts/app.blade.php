@@ -13,13 +13,14 @@
 <body>
   <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="/">USERS CONTROL</a>
+    <div class="d-flex justify-content-center col-md-6">
+        <a href="/register" class="btn btn-primary">Registrar Usuarios</a>
+    </div>
 </nav>
 
 <main class="py-4">
     @yield('content')
 </main>
-
-<h1></h1>
 
 
     

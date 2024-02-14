@@ -15,7 +15,6 @@ class UserController extends Controller
 
         try {
             $dataUser = $request->validate([
-                'rol' => 'required',
                 'name' => 'required|string|max:191',
                 'paternal_surname' => 'required|string|max:191',
                 'maternal_surname' => 'required|string|max:191',
@@ -45,16 +44,17 @@ class UserController extends Controller
     }
 
 
-    public function delete(int $id)
+    public function delete(string $cipherid)
     {
-
+        $id = decrypt($cipherid);
         $user = User::findOrFail($id);
         $user->delete();
         return $this->show();
     }
 
-    public function getUser(int $id)
+    public function getUser(string $cipherid)
     {
+        $id = decrypt($cipherid);
         $user = User::findOrFail($id);
         return view('users.modify', compact('user'));
     }
