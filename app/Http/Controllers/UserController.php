@@ -45,11 +45,30 @@ class UserController extends Controller
     }
 
 
-    public function delete(int $id){
+    public function delete(int $id)
+    {
 
         $user = User::findOrFail($id);
         $user->delete();
         return $this->show();
     }
 
+    public function getUser(int $id)
+    {
+        $user = User::findOrFail($id);
+        return view('users.modify', compact('user'));
+    }
+
+    public function modifyUser(Request $request)
+    {
+    
+
+        $userData = $request->validate([
+            "id" => 'required',
+            'email' => 'required|string|max:191'
+        ]);
+        $user = User::findOrFail($userData['id']);
+        $user->update($userData);
+        return $this->show();
+    }
 }
