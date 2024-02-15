@@ -22,9 +22,8 @@ class UserController extends Controller
                 'password' => 'required|string|min:8',
             ]);
 
-            $userCreated = User::create($dataUser);
-
-            return dd($userCreated);
+           User::create($dataUser);
+            $this->show();
         } catch (Exception $e) {
             return response()->json('no se registro' . $e);
         }
@@ -61,7 +60,7 @@ class UserController extends Controller
 
     public function modifyUser(Request $request)
     {
-    
+
 
         $userData = $request->validate([
             "id" => 'required',
